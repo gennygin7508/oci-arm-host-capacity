@@ -14,6 +14,8 @@ jobs:
           php-version: '8.1'
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist
+      - name: Create private key file
+        run: echo "${{ secrets.OCI_KEY_FILE }}" > ./private_key.pem
       - name: Run script
         env:
           OCI_USER: ${{ secrets.OCI_USER }}
